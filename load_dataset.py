@@ -31,7 +31,17 @@ def main():
     # TODO: include the header Content-Type: text/turtle
     # TODO: include HTTP Basic Auth — auth=(FUSEKI_USER, FUSEKI_PASSWORD)
     # TODO: raise on non-2xx (response.raise_for_status())
-    raise NotImplementedError("Complete the POST in load_dataset.main")
+    
+    with open(TTL_FILE, "rb") as f:
+        response = requests.post(
+            FUSEKI_DATA_URL,
+            data=f.read(),
+            headers={"Content-Type": "text/turtle"},
+            auth=(FUSEKI_USER, FUSEKI_PASSWORD)
+        )
+        
+    response.raise_for_status()
+    print(f"Loaded successfully — status {response.status_code}")
 
 
 if __name__ == "__main__":

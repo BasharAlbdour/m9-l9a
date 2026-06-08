@@ -13,7 +13,20 @@ def q1():
     Returns: 15 rows once the TTL has been extended to 15 recipes.
     """
     # TODO: write a SELECT that returns every :Recipe instance and its :name.
-    return ""
+    return """
+PREFIX :     <http://aispire.example.org/recipes/> 
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#> 
+
+SELECT ?recipe ?name
+WHERE {
+    ?recipe a :Recipe ;
+            :name ?name .
+}
+"""
+
 
 
 def q2():
@@ -25,7 +38,23 @@ def q2():
     via skos:altLabel. Use the SKOS disambiguation pattern from reading §7.
     """
     # TODO: write a SELECT that filters on Italian cuisine via prefLabel OR altLabel.
-    return ""
+    return """
+PREFIX :     <http://aispire.example.org/recipes/> 
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#> 
+
+SELECT DISTINCT ?recipe ?name
+WHERE {
+    ?recipe a :Recipe ;
+            :name ?name ;
+            :cuisine ?cuisine .
+    {?cuisine skos:prefLabel "Italian"}
+    UNION
+    {?cuisine skos:altLabel "italiano"}
+}
+"""
 
 
 def q3():
@@ -35,4 +64,19 @@ def q3():
     Return the ingredient resource (URI), not its label. Use FILTER (?year > 2020).
     """
     # TODO: write a SELECT joining :year, :primaryIngredient, with a year FILTER.
-    return ""
+    return """
+PREFIX :     <http://aispire.example.org/recipes/> 
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#> 
+
+SELECT ?recipe ?ingredient
+WHERE{
+    ?recipe a :Recipe ;
+            :primaryIngredient ?ingredient ;
+            :year ?year .
+    FILTER (?year>2020)
+}
+"""
+
