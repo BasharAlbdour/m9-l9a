@@ -6,9 +6,6 @@
 
 # ---- Cuisine classes (SKOS-labeled) ----
 
-:Italian a :Cuisine ;
-    skos:prefLabel "Italian" ;
-    skos:altLabel  "italiano" .
 
 :Thai a :Cuisine ;
     skos:prefLabel "Thai" ;
