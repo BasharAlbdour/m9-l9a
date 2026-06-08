@@ -6,13 +6,20 @@
 
 # ---- Cuisine classes (SKOS-labeled) ----
 
-:Italian a :Cuisine ;
-    skos:prefLabel "Italian" ;
-    skos:altLabel  "italiano" .
 
 :Thai a :Cuisine ;
     skos:prefLabel "Thai" ;
     skos:altLabel  "ไทย" .
+
+:Mexican a :Cuisine ;
+    skos:prefLabel "Mexican" ;
+    skos:altLabel  "mexicano" .
+
+:Italian a :Cuisine ;
+    skos:prefLabel "Italian" ;
+    skos:altLabel  "italiano" ;
+    skos:altLabel  "Regional Italian" .
+
 
 # TODO: add at least one more cuisine class with skos:prefLabel + skos:altLabel
 # so the 10 recipes you add can use a third cuisine. For Q2 in queries.py to
@@ -33,10 +40,25 @@
     skos:prefLabel "chili" ;
     skos:altLabel  "chile" .
 
+:tomato a :Ingredient ;
+    skos:prefLabel "tomato" ;
+    skos:altLabel  "pomodoro" .
+
+:corn a :Ingredient ;
+    skos:prefLabel "corn" ;
+    skos:altLabel  "maize" .
+
+:chicken a :Ingredient ;
+    skos:prefLabel "chicken" ;
+    skos:altLabel  "pollo" .
+
 # ---- Authors ----
 
 :authorAlice a :Author ; :name "Alice Romano" .
 :authorBruno a :Author ; :name "Bruno Tanaka" .
+:authorCarla a :Author ; :name "Carla Mendez" .
+:authorDavid a :Author ; :name "David Chen" .
+:authorEva   a :Author ; :name "Eva Rossi" .
 
 # TODO: add a few more :Author resources for your recipes to reference.
 
@@ -76,6 +98,76 @@
     :primaryIngredient :eggplant ;
     :author            :authorBruno ;
     :year              2023 .
+
+:recipe006 a :Recipe ;
+    :name              "Tomato Bruschetta" ;
+    :cuisine           :Italian ;
+    :primaryIngredient :tomato ;
+    :author            :authorAlice ;
+    :year              2016 .
+
+:recipe007 a :Recipe ;
+    :name              "Chili Con Carne" ;
+    :cuisine           :Mexican ;
+    :primaryIngredient :chili ;
+    :author            :authorCarla ;
+    :year              2015 .
+
+:recipe008 a :Recipe ;
+    :name              "Corn Tortilla Soup" ;
+    :cuisine           :Mexican ;
+    :primaryIngredient :corn ;
+    :author            :authorCarla ;
+    :year              2017 .
+
+:recipe009 a :Recipe ;
+    :name              "Chicken Mole" ;
+    :cuisine           :Mexican ;
+    :primaryIngredient :chicken ;
+    :author            :authorCarla ;
+    :year              2020 .
+
+:recipe010 a :Recipe ;
+    :name              "Thai Chili Chicken" ;
+    :cuisine           :Thai ;
+    :primaryIngredient :chicken ;
+    :author            :authorDavid ;
+    :year              2024 .
+
+:recipe011 a :Recipe ;
+    :name              "Tomato Risotto" ;
+    :cuisine           :Italian ;
+    :primaryIngredient :tomato ;
+    :author            :authorEva ;
+    :year              2022 .
+
+:recipe012 a :Recipe ;
+    :name              "Basil Chicken Tacos" ;
+    :cuisine           :Mexican ;
+    :primaryIngredient :basil ;
+    :author            :authorCarla ;
+    :year              2021 .
+
+:recipe013 a :Recipe ;
+    :name              "Eggplant Tostadas" ;
+    :cuisine           :Mexican ;
+    :primaryIngredient :eggplant ;
+    :author            :authorDavid ;
+    :year              2023 .
+
+:recipe014 a :Recipe ;
+    :name              "Thai Tomato Soup" ;
+    :cuisine           :Thai ;
+    :primaryIngredient :tomato ;
+    :author            :authorDavid ;
+    :year              2015 .
+
+:recipe015 a :Recipe ;
+    :name              "Rustic Italian Corn Polenta" ;
+    :cuisine           :Italian ;
+    :primaryIngredient :corn ;
+    :author            :authorEva ;
+    :year              2024 .
 
 # TODO: add 10 more recipes (recipe006..recipe015) following the same pattern.
 # Use a mix of years from 2015 through 2024 so the post-2020 query (Q3) has
